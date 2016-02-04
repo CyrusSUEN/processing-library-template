@@ -1,8 +1,15 @@
 package template.library;
 
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 import processing.core.*;
 
@@ -52,6 +59,19 @@ public class HelloLibrary {
 	public String loadFromTxt(String fileName) {
 		InputStream is = getClass().getResourceAsStream(fileName);
 		return new Scanner(is,"UTF-8").useDelimiter("\\A").next();
+	}
+	
+	public void checkJar() throws Exception {
+		List<String> classNames = new ArrayList<String>();
+		ZipInputStream zip = new ZipInputStream(new FileInputStream("/"));
+		for (ZipEntry entry = zip.getNextEntry(); entry != null; entry = zip.getNextEntry()) {
+		    if (!entry.isDirectory() && entry.getName().endsWith(".class")) {
+		        // This ZipEntry represents a class. Now, what class does it represent?
+		        String className = entry.getName().replace('/', '.'); // including ".class"
+		        classNames.add(className.substring(0, className.length() - ".class".length()));
+		    }
+		}
+		System.out.println(classNames.toString());
 	}
 	
 	/**
