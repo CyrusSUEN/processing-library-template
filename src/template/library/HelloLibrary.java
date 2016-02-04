@@ -1,6 +1,14 @@
 package template.library;
 
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.UnsupportedEncodingException;
+import java.util.Scanner;
+
 import processing.core.*;
 
 /**
@@ -45,6 +53,13 @@ public class HelloLibrary {
 	public String sayHello() {
 		return "hello library.";
 	}
+	
+	public String loadFromTxt() {
+		InputStream is = getClass().getResourceAsStream("english.txt");
+		String inputStreamString = new Scanner(is,"UTF-8").useDelimiter("\\A").next();
+		return inputStreamString;
+	}
+	
 	/**
 	 * return the version of the Library.
 	 * 

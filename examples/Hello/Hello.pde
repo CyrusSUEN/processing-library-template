@@ -8,12 +8,12 @@ void setup() {
   
   hello = new HelloLibrary(this);
   
-  PFont font = createFont("",40);
+  PFont font = createFont("",28);
   textFont(font);
 }
 
 void draw() {
   background(0);
   fill(255);
-  text(hello.sayHello(), 40, 200);
+  text(hello.loadFromTxt(), 20, 20);
 }
