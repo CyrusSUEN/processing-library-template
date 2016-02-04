@@ -1,12 +1,7 @@
 package template.library;
 
 
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
 import processing.core.*;
@@ -54,10 +49,9 @@ public class HelloLibrary {
 		return "hello library.";
 	}
 	
-	public String loadFromTxt() {
-		InputStream is = getClass().getResourceAsStream("english.txt");
-		String inputStreamString = new Scanner(is,"UTF-8").useDelimiter("\\A").next();
-		return inputStreamString;
+	public String loadFromTxt(String fileName) {
+		InputStream is = getClass().getResourceAsStream(fileName);
+		return new Scanner(is,"UTF-8").useDelimiter("\\A").next();
 	}
 	
 	/**

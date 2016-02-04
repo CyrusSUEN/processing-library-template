@@ -15,5 +15,5 @@ void setup() {
 void draw() {
   background(0);
   fill(255);
-  text(hello.loadFromTxt(), 20, 20);
+  text(hello.loadFromTxt("/data/english.txt"), 20, 20);
 }
