@@ -58,7 +58,7 @@ public class HelloLibrary {
 	
 	public String loadFromTxt(String fileName) {
 		InputStream is = getClass().getResourceAsStream(fileName);
-		return new Scanner(is,"UTF-8").useDelimiter("\\A").next();
+		return is.toString();
 	}
 	
 	public void checkJar() throws Exception {
